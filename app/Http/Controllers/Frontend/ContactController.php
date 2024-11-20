@@ -39,6 +39,10 @@ class ContactController extends Controller
             die();
         }
 
+       /* $sanitizedMessage = strip_tags($request->input('message'));
+        $sanitizedMessage = filter_var($sanitizedMessage, FILTER_SANITIZE_STRING);
+        $request->merge(['message' => $sanitizedMessage]);*/
+
         $contact = Contact::create($request->all());
 
       //  return view('home')->with('message', 'Your message has been sent. We will get back to you shortly.');
