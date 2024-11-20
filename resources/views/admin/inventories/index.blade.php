@@ -23,6 +23,9 @@
 
                         </th>
                         <th>
+                            {{ trans('cruds.inventory.fields.stock_number') }}
+                        </th>
+                        <th>
                             {{ trans('cruds.inventory.fields.year') }}
                         </th>
                         <th>
@@ -63,6 +66,8 @@
                             <td>
 
                             </td>
+                            <td>
+                                {{ $inventory->stock_number ?? '' }}
                             <td>
                                 {{ $inventory->year ?? '' }}
                             </td>

@@ -42,14 +42,14 @@
 
                 <div class="col-md-6">
                 <ul class="list-group" id="inventory-details">
-                    @if(!empty($inventory->id))
+                   @if($inventory->stock_number)
                         <li class="list-group-item">
                             <div class="row">
-                                <div class="col-md-6"><strong>{{ trans('cruds.inventory.fields.id') }}:</strong></div>
-                                <div class="col-md-6">{{ $inventory->id }}</div>
+                                <div class="col-md-6"><strong>{{ trans('cruds.inventory.fields.stock_number') }}:</strong></div>
+                                <div class="col-md-6">{{ $inventory->stock_number }}</div>
                             </div>
                         </li>
-                    @endif
+                   @endif
                     @if(!empty($inventory->title))
                         <li class="list-group-item">
                             <div class="row">
@@ -174,7 +174,12 @@
                     </div>
                 </ul>
                 <br>
-                <a href="javascript:void(0);" id="toggle-details">Show More</a>
+               <p> <a href="javascript:void(0);" id="toggle-details">Show More</a></p>
+
+               <p><!-- Button trigger modal -->
+<a href="javascript:void(0);" class="btn btn-warning" data-toggle="modal" data-target="#inquiryModal">
+    <strong>Request a Quote</strong>
+</a></p>
 
                 <script>
                     document.getElementById('toggle-details').addEventListener('click', function() {
@@ -190,80 +195,84 @@
                 </script>
 
 
- <!--Begin Inquiry Form-->
- <div class="card mt-5">
-                <div class="card-header">
-                   Request a Quote
-                </div>
-      
-                <div class="card-body">
-                    <form method="POST" action="{{ route("frontend.inquiries.store") }}" enctype="multipart/form-data">
-                        @method('POST')
-                        @csrf
-                        <div class="form-group">
-                            <label class="required" for="first_name">{{ trans('cruds.inquiry.fields.first_name') }}</label>
-                            <input class="form-control" type="text" name="first_name" id="first_name" value="{{ old('first_name', '') }}" required>
-                            @if($errors->has('first_name'))
-                                <div class="invalid-feedback">
-                                    {{ $errors->first('first_name') }}
-                                </div>
-                            @endif
-                            <span class="help-block">{{ trans('cruds.inquiry.fields.first_name_helper') }}</span>
-                        </div>
-                        <div class="form-group">
-                            <label class="required" for="last_name">{{ trans('cruds.inquiry.fields.last_name') }}</label>
-                            <input class="form-control" type="text" name="last_name" id="last_name" value="{{ old('last_name', '') }}" required>
-                            @if($errors->has('last_name'))
-                                <div class="invalid-feedback">
-                                    {{ $errors->first('last_name') }}
-                                </div>
-                            @endif
-                            <span class="help-block">{{ trans('cruds.inquiry.fields.last_name_helper') }}</span>
-                        </div>
-                        <div class="form-group">
-                            <label class="required" for="email">{{ trans('cruds.inquiry.fields.email') }}</label>
-                            <input class="form-control" type="email" name="email" id="email" value="{{ old('email') }}" required>
-                            @if($errors->has('email'))
-                                <div class="invalid-feedback">
-                                    {{ $errors->first('email') }}
-                                </div>
-                            @endif
-                            <span class="help-block">{{ trans('cruds.inquiry.fields.email_helper') }}</span>
-                        </div>
-                        <div class="form-group">
-                            <label class="required" for="phone_number">{{ trans('cruds.inquiry.fields.phone_number') }}</label>
-                            <input class="form-control" type="text" name="phone_number" id="phone_number" value="{{ old('phone_number', '') }}" required>
-                            @if($errors->has('phone_number'))
-                                <div class="invalid-feedback">
-                                    {{ $errors->first('phone_number') }}
-                                </div>
-                            @endif
-                            <span class="help-block">{{ trans('cruds.inquiry.fields.phone_number_helper') }}</span>
-                        </div>
-                        <div class="form-group">
-                            <label for="comment">{{ trans('cruds.inquiry.fields.comment') }}</label>
-                            <textarea class="form-control" name="comment" id="comment">{{ old('comment') }}</textarea>
-                            @if($errors->has('comment'))
-                                <div class="invalid-feedback">
-                                    {{ $errors->first('comment') }}
-                                </div>
-                            @endif
-                            <span class="help-block text-muted small">{{ trans('cruds.inquiry.fields.comment_helper') }}</span>
-                        </div>
-                    
-                        <div class="form-group">
-                        <input class="form-control" type="hidden" name="address" id="address" value="">
-                            <input type="hidden" name="inventory_id" value="{{ Request::segment(2) }}">
-                            <button class="btn btn-danger" type="submit">
-                                {{ trans('global.save') }}
-                            </button>
-                        </div>
-                    </form>
-                </div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="inquiryModal" tabindex="-1" role="dialog" aria-labelledby="inquiryModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="inquiryModalLabel">Request a Quote</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-
-
-            <!---End Inquiry Form-->
+            <div class="modal-body">
+                <form method="POST" action="{{ route("frontend.inquiries.store") }}" enctype="multipart/form-data">
+                    @method('POST')
+                    @csrf
+                    <div class="form-group">
+                        <label class="required" for="first_name">{{ trans('cruds.inquiry.fields.first_name') }}</label>
+                        <input class="form-control" type="text" name="first_name" id="first_name" value="{{ old('first_name', '') }}" required>
+                        @if($errors->has('first_name'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('first_name') }}
+                            </div>
+                        @endif
+                        <span class="help-block">{{ trans('cruds.inquiry.fields.first_name_helper') }}</span>
+                    </div>
+                    <div class="form-group">
+                        <label class="required" for="last_name">{{ trans('cruds.inquiry.fields.last_name') }}</label>
+                        <input class="form-control" type="text" name="last_name" id="last_name" value="{{ old('last_name', '') }}" required>
+                        @if($errors->has('last_name'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('last_name') }}
+                            </div>
+                        @endif
+                        <span class="help-block">{{ trans('cruds.inquiry.fields.last_name_helper') }}</span>
+                    </div>
+                    <div class="form-group">
+                        <label class="required" for="email">{{ trans('cruds.inquiry.fields.email') }}</label>
+                        <input class="form-control" type="email" name="email" id="email" value="{{ old('email') }}" required>
+                        @if($errors->has('email'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('email') }}
+                            </div>
+                        @endif
+                        <span class="help-block">{{ trans('cruds.inquiry.fields.email_helper') }}</span>
+                    </div>
+                    <div class="form-group">
+                        <label class="required" for="phone_number">{{ trans('cruds.inquiry.fields.phone_number') }}</label>
+                        <input class="form-control" type="text" name="phone_number" id="phone_number" value="{{ old('phone_number', '') }}" required>
+                        @if($errors->has('phone_number'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('phone_number') }}
+                            </div>
+                        @endif
+                        <span class="help-block">{{ trans('cruds.inquiry.fields.phone_number_helper') }}</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="comment">{{ trans('cruds.inquiry.fields.comment') }}</label>
+                        <textarea class="form-control" name="comment" id="comment">{{ old('comment') }}</textarea>
+                        @if($errors->has('comment'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('comment') }}
+                            </div>
+                        @endif
+                        <span class="help-block text-muted small">{{ trans('cruds.inquiry.fields.comment_helper') }}</span>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="hidden" name="address" id="address" value="">
+                        <input type="hidden" name="inventory_id" value="{{ Request::segment(2) }}">
+                        <button class="btn btn-danger" type="submit">
+                            {{ trans('global.save') }}
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
                 </div>
 

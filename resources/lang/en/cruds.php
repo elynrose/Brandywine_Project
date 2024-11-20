@@ -172,6 +172,7 @@ return [
             'id'                            => 'ID',
             'id_helper'                     => ' ',
             'stock_number'                  => 'Stock Number',
+            'stock_number_helper'           => ' ',
             'year'                          => 'Year',
             'year_helper'                   => ' ',
             'make'                          => 'Make',
