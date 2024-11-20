@@ -63,7 +63,7 @@ class ContactController extends Controller
                 'ip' => $request->ip(),
             ]);
 
-            die('Anauthorized access. IP address logged.');
+            return back();
         }
 
         $contact = Contact::create($request->all());
