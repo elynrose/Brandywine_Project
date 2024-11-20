@@ -264,6 +264,8 @@
                     <div class="form-group">
                         <input class="form-control" type="hidden" name="address" id="address" value="">
                         <input type="hidden" name="inventory_id" value="{{ Request::segment(2) }}">
+                        <div class="g-recaptcha" data-sitekey="6Lc6Q4UqAAAAAElnp4q9Oaa3b_ImDFLZ8_5_uTJi"></div>
+
                         <button class="btn btn-danger" type="submit">
                             {{ trans('global.save') }}
                         </button>
