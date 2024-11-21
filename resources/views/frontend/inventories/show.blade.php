@@ -268,10 +268,14 @@
                     </div>
                     <div class="form-group">
 
-                    <p>Solve this problem, write the answer in words<br> 1 + 4 = <input style="width:20px;" type="text" name="answer" value=""></p>
-                </div>
-                <div class="g-recaptcha" data-sitekey="6Lc6Q4UqAAAAAElnp4q9Oaa3b_ImDFLZ8_5_uTJi"></div>
-                <br/>                   <button class="btn btn-danger" type="submit">
+                    {{-- Add reCAPTCHA widget --}}
+    {!! NoCaptcha::display() !!}
+
+    @if ($errors->has('g-recaptcha-response'))
+        <span class="text-danger">{{ $errors->first('g-recaptcha-response') }}</span>
+    @endif
+    
+    <button class="btn btn-danger" type="submit">
     {{ trans('global.save') }}
 </button>
                     </div>

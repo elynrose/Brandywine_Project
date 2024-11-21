@@ -93,8 +93,13 @@
                             <input class="form-control" type="hidden" name="pot" id="pot" value="{{ old('pot', '') }}">
                         </div>
                         <div class="form-group">
-                        <div class="g-recaptcha" data-sitekey="6Lc6Q4UqAAAAAElnp4q9Oaa3b_ImDFLZ8_5_uTJi"></div>
-                        <br/>                    
+                        {{-- Add reCAPTCHA widget --}}
+    {!! NoCaptcha::display() !!}
+
+    @if ($errors->has('g-recaptcha-response'))
+        <span class="text-danger">{{ $errors->first('g-recaptcha-response') }}</span>
+    @endif
+                        
                             <button class="btn btn-danger" type="submit">
     {{ trans('global.save') }}
 </button>

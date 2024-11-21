@@ -45,13 +45,12 @@ class InquiriesController extends Controller
             'phone_number' => 'required',
             'comment' => 'required',
             'inventory_id' => 'required',
-            'recaptcha_token' => 'required',
-        ]);
-    
-        $response = Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
-            'secret' => config('captcha.secret'),
-            'response' => $request->input('recaptcha_token'),
-        ]);
+          'g-recaptcha-response' => 'required|captcha',
+    ]);
+
+    if ($validator->fails()) {
+        return redirect()->back()->withErrors($validator)->withInput();
+    }
     
         $recaptcha = $response->json();
     
