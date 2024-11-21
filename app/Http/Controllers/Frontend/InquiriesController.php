@@ -35,9 +35,19 @@ class InquiriesController extends Controller
     }
 
 
-    public function save(StoreInquiryRequest $request)
+    public function save($request)
     {
-        $inquiry = Inquiry::create($request->all());
+        if($request->address !== null){
+            //This is spam
+            return redirect()->route('frontend.inquiries.show', $request->inventory_id);
+        }
+        $inquiry = Inquiry::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'message' => $request->message,
+            'inventory_id' => $request->inventory_id,
+        ]);
 
         return redirect()->route('frontend.inquiries.show', $request->inventory_id);
 
