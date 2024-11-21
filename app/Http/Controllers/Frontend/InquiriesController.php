@@ -47,7 +47,7 @@ class InquiriesController extends Controller
             die();
         }
 
-        if($request->ansewer != 'three'){
+        if($request->ansewer != 'three' || $request->ansewer != 'Three'){
             return back()->withErrors(['recaptcha' => 'reCAPTCHA verification failed.']);
         }
 
