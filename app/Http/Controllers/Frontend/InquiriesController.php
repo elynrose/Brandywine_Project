@@ -11,6 +11,8 @@ use App\Models\Inventory;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Support\Facades\Http;
+
 
 class InquiriesController extends Controller
 {
@@ -34,9 +36,32 @@ class InquiriesController extends Controller
 
     public function store(StoreInquiryRequest $request)
     {
-        if ($request->filled('address')) {
-            return back();
+        $request->validate([
+            'recaptcha_token' => 'required',
+        ]);
+
+        if (!empty($request->address)) {
+            // This contact message is a spam, do not store it
+            \Log::info('Spam contact message detected', [
+                'message' => $request->input('message'),
+                'ip' => $request->ip(),
+            ]);
+
+            die();
         }
+
+    
+        $response = Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
+            'secret' => config('captcha.secret'),
+            'response' => $request->input('recaptcha_token'),
+        ]);
+    
+        $recaptcha = $response->json();
+    
+        if (!$recaptcha['success'] || $recaptcha['score'] < 0.5) {
+            return back()->withErrors(['recaptcha' => 'reCAPTCHA verification failed.']);
+        }
+    
 
         $inquiry = Inquiry::create($request->all());
 

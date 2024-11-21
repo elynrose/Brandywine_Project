@@ -79,6 +79,7 @@
                         </div>
                         <div class="form-group">
                             <input class="form-control" type="hidden" name="address" id="address" value="{{ old('address', '') }}">
+                            <input type="hidden" name="recaptcha_token" id="recaptcha_token">
                                             </div>
                         <div class="form-group">
                             <button class="btn btn-danger" type="submit">

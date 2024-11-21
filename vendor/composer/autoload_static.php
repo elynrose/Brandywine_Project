@@ -22,11 +22,11 @@ class ComposerStaticInit2a59deb97fa350a986cd061ba636073d
         '3bd81c9b8fcc150b69d8b63b4d2ccf23' => __DIR__ . '/..' . '/spatie/flare-client-php/src/helpers.php',
         '09f6b20656683369174dd6fa83b7e5fb' => __DIR__ . '/..' . '/symfony/polyfill-uuid/bootstrap.php',
         'a1105708a18b76903365ca1c4aa61b02' => __DIR__ . '/..' . '/symfony/translation/Resources/functions.php',
+        '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
         '47e1160838b5e5a10346ac4084b58c23' => __DIR__ . '/..' . '/laravel/prompts/src/helpers.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
         'e39a8b23c42d4e1452234d762b03835a' => __DIR__ . '/..' . '/ramsey/uuid/src/functions.php',
-        '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
         '265b4faa2b3a9766332744949e83bf97' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Collections/helpers.php',
         'c7a3c339e7e14b60e06a2d7fcce9476b' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Events/functions.php',
         'f57d353b41eb2e234b26064d63d8c5dd' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Filesystem/functions.php',
@@ -192,6 +192,7 @@ class ComposerStaticInit2a59deb97fa350a986cd061ba636073d
         'A' => 
         array (
             'App\\' => 4,
+            'Anhskohbo\\NoCaptcha\\' => 20,
         ),
     );
 
@@ -396,8 +397,8 @@ class ComposerStaticInit2a59deb97fa350a986cd061ba636073d
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -584,12 +585,20 @@ class ComposerStaticInit2a59deb97fa350a986cd061ba636073d
             0 => __DIR__ . '/../..' . '/app',
             1 => __DIR__ . '/..' . '/laravel/pint/app',
         ),
+        'Anhskohbo\\NoCaptcha\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/anhskohbo/no-captcha/src',
+        ),
     );
 
     public static $classMap = array (
+        'Anhskohbo\\NoCaptcha\\Facades\\NoCaptcha' => __DIR__ . '/..' . '/anhskohbo/no-captcha/src/Facades/NoCaptcha.php',
+        'Anhskohbo\\NoCaptcha\\NoCaptcha' => __DIR__ . '/..' . '/anhskohbo/no-captcha/src/NoCaptcha.php',
+        'Anhskohbo\\NoCaptcha\\NoCaptchaServiceProvider' => __DIR__ . '/..' . '/anhskohbo/no-captcha/src/NoCaptchaServiceProvider.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\Admin\\CategoriesController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/CategoriesController.php',
+        'App\\Http\\Controllers\\Admin\\ContactController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/ContactController.php',
         'App\\Http\\Controllers\\Admin\\ContentCategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/ContentCategoryController.php',
         'App\\Http\\Controllers\\Admin\\ContentPageController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/ContentPageController.php',
         'App\\Http\\Controllers\\Admin\\ContentTagController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/ContentTagController.php',
@@ -609,6 +618,7 @@ class ComposerStaticInit2a59deb97fa350a986cd061ba636073d
         'App\\Http\\Controllers\\Auth\\VerificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/VerificationController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\Frontend\\CategoriesController' => __DIR__ . '/../..' . '/app/Http/Controllers/Frontend/CategoriesController.php',
+        'App\\Http\\Controllers\\Frontend\\ContactController' => __DIR__ . '/../..' . '/app/Http/Controllers/Frontend/ContactController.php',
         'App\\Http\\Controllers\\Frontend\\ContentCategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/Frontend/ContentCategoryController.php',
         'App\\Http\\Controllers\\Frontend\\ContentPageController' => __DIR__ . '/../..' . '/app/Http/Controllers/Frontend/ContentPageController.php',
         'App\\Http\\Controllers\\Frontend\\ContentTagController' => __DIR__ . '/../..' . '/app/Http/Controllers/Frontend/ContentTagController.php',
@@ -637,6 +647,7 @@ class ComposerStaticInit2a59deb97fa350a986cd061ba636073d
         'App\\Http\\Middleware\\ValidateSignature' => __DIR__ . '/../..' . '/app/Http/Middleware/ValidateSignature.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Http\\Requests\\MassDestroyCategoryRequest' => __DIR__ . '/../..' . '/app/Http/Requests/MassDestroyCategoryRequest.php',
+        'App\\Http\\Requests\\MassDestroyContactRequest' => __DIR__ . '/../..' . '/app/Http/Requests/MassDestroyContactRequest.php',
         'App\\Http\\Requests\\MassDestroyContentCategoryRequest' => __DIR__ . '/../..' . '/app/Http/Requests/MassDestroyContentCategoryRequest.php',
         'App\\Http\\Requests\\MassDestroyContentPageRequest' => __DIR__ . '/../..' . '/app/Http/Requests/MassDestroyContentPageRequest.php',
         'App\\Http\\Requests\\MassDestroyContentTagRequest' => __DIR__ . '/../..' . '/app/Http/Requests/MassDestroyContentTagRequest.php',
@@ -647,6 +658,7 @@ class ComposerStaticInit2a59deb97fa350a986cd061ba636073d
         'App\\Http\\Requests\\MassDestroyRoleRequest' => __DIR__ . '/../..' . '/app/Http/Requests/MassDestroyRoleRequest.php',
         'App\\Http\\Requests\\MassDestroyUserRequest' => __DIR__ . '/../..' . '/app/Http/Requests/MassDestroyUserRequest.php',
         'App\\Http\\Requests\\StoreCategoryRequest' => __DIR__ . '/../..' . '/app/Http/Requests/StoreCategoryRequest.php',
+        'App\\Http\\Requests\\StoreContactRequest' => __DIR__ . '/../..' . '/app/Http/Requests/StoreContactRequest.php',
         'App\\Http\\Requests\\StoreContentCategoryRequest' => __DIR__ . '/../..' . '/app/Http/Requests/StoreContentCategoryRequest.php',
         'App\\Http\\Requests\\StoreContentPageRequest' => __DIR__ . '/../..' . '/app/Http/Requests/StoreContentPageRequest.php',
         'App\\Http\\Requests\\StoreContentTagRequest' => __DIR__ . '/../..' . '/app/Http/Requests/StoreContentTagRequest.php',
@@ -657,6 +669,7 @@ class ComposerStaticInit2a59deb97fa350a986cd061ba636073d
         'App\\Http\\Requests\\StoreRoleRequest' => __DIR__ . '/../..' . '/app/Http/Requests/StoreRoleRequest.php',
         'App\\Http\\Requests\\StoreUserRequest' => __DIR__ . '/../..' . '/app/Http/Requests/StoreUserRequest.php',
         'App\\Http\\Requests\\UpdateCategoryRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UpdateCategoryRequest.php',
+        'App\\Http\\Requests\\UpdateContactRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UpdateContactRequest.php',
         'App\\Http\\Requests\\UpdateContentCategoryRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UpdateContentCategoryRequest.php',
         'App\\Http\\Requests\\UpdateContentPageRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UpdateContentPageRequest.php',
         'App\\Http\\Requests\\UpdateContentTagRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UpdateContentTagRequest.php',
@@ -669,6 +682,7 @@ class ComposerStaticInit2a59deb97fa350a986cd061ba636073d
         'App\\Http\\Requests\\UpdateRoleRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UpdateRoleRequest.php',
         'App\\Http\\Requests\\UpdateUserRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UpdateUserRequest.php',
         'App\\Models\\Category' => __DIR__ . '/../..' . '/app/Models/Category.php',
+        'App\\Models\\Contact' => __DIR__ . '/../..' . '/app/Models/Contact.php',
         'App\\Models\\ContentCategory' => __DIR__ . '/../..' . '/app/Models/ContentCategory.php',
         'App\\Models\\ContentPage' => __DIR__ . '/../..' . '/app/Models/ContentPage.php',
         'App\\Models\\ContentTag' => __DIR__ . '/../..' . '/app/Models/ContentTag.php',
@@ -7003,6 +7017,7 @@ class ComposerStaticInit2a59deb97fa350a986cd061ba636073d
         'Termwind\\ValueObjects\\Style' => __DIR__ . '/..' . '/nunomaduro/termwind/src/ValueObjects/Style.php',
         'Termwind\\ValueObjects\\Styles' => __DIR__ . '/..' . '/nunomaduro/termwind/src/ValueObjects/Styles.php',
         'Tests\\Browser\\CategoriesTest' => __DIR__ . '/../..' . '/tests/Browser/CategoriesTest.php',
+        'Tests\\Browser\\ContactTest' => __DIR__ . '/../..' . '/tests/Browser/ContactTest.php',
         'Tests\\Browser\\ContentCategoryTest' => __DIR__ . '/../..' . '/tests/Browser/ContentCategoryTest.php',
         'Tests\\Browser\\ContentPageTest' => __DIR__ . '/../..' . '/tests/Browser/ContentPageTest.php',
         'Tests\\Browser\\ContentTagTest' => __DIR__ . '/../..' . '/tests/Browser/ContentTagTest.php',

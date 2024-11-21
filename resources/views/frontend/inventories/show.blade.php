@@ -181,22 +181,7 @@
     <strong>Request a Quote</strong>
 </a></p>
 
-                <script>
-                    document.getElementById('toggle-details').addEventListener('click', function() {
-                        var moreDetails = document.getElementById('more-details');
-                        if (moreDetails.style.display === 'none') {
-                            moreDetails.style.display = 'block';
-                            this.textContent = 'Show Less';
-                        } else {
-                            moreDetails.style.display = 'none';
-                            this.textContent = 'Show More';
-                        }
-                    });
-                </script>
-
-
-
-
+        
 <!-- Modal -->
 <div class="modal fade" id="inquiryModal" tabindex="-1" role="dialog" aria-labelledby="inquiryModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -264,8 +249,7 @@
                     <div class="form-group">
                         <input class="form-control" type="hidden" name="address" id="address" value="">
                         <input type="hidden" name="inventory_id" value="{{ Request::segment(2) }}">
-                        <div class="g-recaptcha" data-sitekey="6Lc6Q4UqAAAAAElnp4q9Oaa3b_ImDFLZ8_5_uTJi"></div>
-
+                        <input type="hidden" name="recaptcha_token" id="recaptcha_token">
                         <button class="btn btn-danger" type="submit">
                             {{ trans('global.save') }}
                         </button>
@@ -296,6 +280,19 @@
 @endsection
 
 @section('scripts')
+<script>
+                    document.getElementById('toggle-details').addEventListener('click', function() {
+                        var moreDetails = document.getElementById('more-details');
+                        if (moreDetails.style.display === 'none') {
+                            moreDetails.style.display = 'block';
+                            this.textContent = 'Show Less';
+                        } else {
+                            moreDetails.style.display = 'none';
+                            this.textContent = 'Show More';
+                        }
+                    });
+                </script>
+
 <script>
     $(document).ready(function(){
         $('#carouselExampleControls').carousel();

@@ -10,6 +10,8 @@ use App\Models\Contact;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Support\Facades\Http;
+
 
 class ContactController extends Controller
 {
@@ -29,6 +31,11 @@ class ContactController extends Controller
 
     public function store(StoreContactRequest $request)
     {
+        
+        $request->validate([
+            'recaptcha_token' => 'required',
+        ]);
+
         if (!empty($request->pot)) {
             // This contact message is a spam, do not store it
             \Log::info('Spam contact message detected', [
@@ -39,10 +46,18 @@ class ContactController extends Controller
             die();
         }
 
-       /* $sanitizedMessage = strip_tags($request->input('message'));
-        $sanitizedMessage = filter_var($sanitizedMessage, FILTER_SANITIZE_STRING);
-        $request->merge(['message' => $sanitizedMessage]);*/
-
+    
+        $response = Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
+            'secret' => config('captcha.secret'),
+            'response' => $request->input('recaptcha_token'),
+        ]);
+    
+        $recaptcha = $response->json();
+    
+        if (!$recaptcha['success'] || $recaptcha['score'] < 0.5) {
+            return back()->withErrors(['recaptcha' => 'reCAPTCHA verification failed.']);
+        }
+    
         $contact = Contact::create($request->all());
 
       //  return view('home')->with('message', 'Your message has been sent. We will get back to you shortly.');
