@@ -37,6 +37,16 @@ class InquiriesController extends Controller
 
     public function save(Request $request)
     {
+        //add validation
+        $request->validate([
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required',
+            'phone_number' => 'required',
+            'comment' => 'required',
+            'inventory_id' => 'required',
+        ]);
+
         $inquiry = Inquiry::create($request->all());
 
         return redirect()->route('frontend.inquiries.show', $request->inventory_id)->with('success', 'Inquiry saved successfully.');
