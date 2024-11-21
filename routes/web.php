@@ -21,7 +21,12 @@ Route::get('get-video', function () {
  Route::get('key-generate', function () {
      shell_exec('key:generate');
  });
- 
+ Route::get('cache-clear', function () {
+    shell_exec('cache:clear');
+});
+Route::get('config-cache', function () {
+    shell_exec('config:cache');
+});
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth', 'admin']], function () {
     Route::get('/', 'HomeController@index')->name('home');
