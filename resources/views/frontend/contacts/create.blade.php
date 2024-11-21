@@ -1,5 +1,13 @@
 @extends('layouts.frontend')
 @section('content')
+<script>
+    grecaptcha.ready(function() {
+        grecaptcha.execute('{{ config('captcha.sitekey') }}', {action: 'submit'}).then(function(token) {
+            // Assign token to hidden field
+            document.getElementById('recaptcha_token').value = token;
+        });
+    });
+</script>
 <div class="container py-5">
     <div class="row justify-content-center">
         <div class="col-md-6">
@@ -108,12 +116,5 @@
 </div>
 @endsection
 @section('scripts')
-<script>
-    grecaptcha.ready(function() {
-        grecaptcha.execute('{{ config('captcha.sitekey') }}', {action: 'submit'}).then(function(token) {
-            // Assign token to hidden field
-            document.getElementById('recaptcha_token').value = token;
-        });
-    });
-</script>
+
 @endsection
