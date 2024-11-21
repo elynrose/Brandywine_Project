@@ -249,10 +249,10 @@
                     <div class="form-group">
                         <input class="form-control" type="hidden" name="address" id="address" value="">
                         <input type="hidden" name="inventory_id" value="{{ Request::segment(2) }}">
-                        <div class="g-recaptcha" data-sitekey="{{ config('captcha.sitekey') }}"></div>
-                        <br/>                        <button class="btn btn-danger" type="submit">
-                            {{ trans('global.save') }}
-                        </button>
+                        <button class="btn btn-danger g-recaptcha" type="submit"
+        data-sitekey="reCAPTCHA_site_key" 
+        data-callback='onSubmit' 
+        data-action='submit'>
                     </div>
                 </form>
             </div>

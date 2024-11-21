@@ -93,9 +93,11 @@
                             <input class="form-control" type="hidden" name="pot" id="pot" value="{{ old('pot', '') }}">
                         </div>
                         <div class="form-group">
-                        <div class="g-recaptcha" data-sitekey="{{ config('captcha.sitekey') }}"></div>
-                        <br/>
-                            <button class="btn btn-danger" type="submit">
+                    
+                            <button class="btn btn-danger g-recaptcha" type="submit"
+        data-sitekey="reCAPTCHA_site_key" 
+        data-callback='onSubmit' 
+        data-action='submit'>
                                 {{ trans('global.save') }}
                             </button>
                         </div>

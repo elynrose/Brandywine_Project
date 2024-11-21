@@ -30,20 +30,12 @@
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet" />
  
     @yield('styles')
-
-    <script src="https://www.google.com/recaptcha/api.js?render={{ config('captcha.sitekey') }}"></script>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
     <script>
-    grecaptcha.ready(function() {
-        grecaptcha.execute('{{ config('captcha.sitekey') }}', {action: 'submit'}).then(function(token) {
-            document.getElementById('recaptcha_token').value = token;
-        });
-    });
-</script>
-<style>
-    .grecaptcha-badge {
-        visibility: visible !important;
-    }
-</style>
+   function onSubmit(token) {
+     document.getElementById("form").submit();
+   }
+ </script>
 </head>
 
 <body>
