@@ -12,6 +12,7 @@ use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Validator;
 
 
 
@@ -38,7 +39,7 @@ class InquiriesController extends Controller
     public function save(Request $request)
     {
         //add validation
-        $request->validate([
+        $validator = Validator::make($request->all(), [
             'first_name' => 'required',
             'last_name' => 'required',
             'email' => 'required',

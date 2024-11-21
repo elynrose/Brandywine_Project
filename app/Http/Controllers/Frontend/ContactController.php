@@ -11,6 +11,7 @@ use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Validator;
 
 
 class ContactController extends Controller
@@ -67,7 +68,7 @@ class ContactController extends Controller
     public function saveContact(Request $request)
     {
       
-        $request->validate([
+        $validator = Validator::make($request->all(), [
             'first_name' => 'required',
             'last_name' => 'required',
             'email' => 'required|email',
