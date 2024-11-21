@@ -145,7 +145,7 @@
                     <i class="fa-fw far fa-comments c-sidebar-nav-icon">
 
                     </i>
-                    {{ trans('cruds.contacts.title') }}
+                    {{ trans('cruds.contact.title') }}
                 </a>
             </li>
         @endcan
