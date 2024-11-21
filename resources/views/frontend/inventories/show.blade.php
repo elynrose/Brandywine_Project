@@ -208,7 +208,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="POST" action="{{ route("frontend.inquiries.save") }}" enctype="multipart/form-data">
+                <form method="POST" id="form" action="{{ route("frontend.inquiries.save") }}" enctype="multipart/form-data">
                     @method('POST')
                     @csrf
                     <div class="form-group">
@@ -269,7 +269,10 @@
 
                     <p>Solve this problem, write the answer in words<br> 1 + 4 = <input style="width:20px;" type="text" name="answer" value=""></p>
                 </div>
-                        <button class="btn btn-danger" type="submit">
+                <button class="g-recaptcha btn btn-danger" 
+        data-sitekey="6Lc4DIYqAAAAALd_TMfHUltnDYL6swGq3blE1xBz" 
+        data-callback='onSubmit' 
+        data-action='submit' type="submit">
                             {{ trans('global.save') }}
                         </button>
                     </div>
@@ -304,4 +307,10 @@
         $('#carouselExampleControls').carousel();
     });
 </script>
+
+<script>
+   function onSubmit(token) {
+     document.getElementById("form").submit();
+   }
+ </script>
 @endsection

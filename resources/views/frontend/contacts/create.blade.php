@@ -94,10 +94,10 @@
                         </div>
                         <div class="form-group">
                     
-                            <button class="btn btn-danger g-recaptcha" type="submit"
-        data-sitekey="{{ config('captcha.sitekey') }}" 
+                        <button class="g-recaptcha btn btn-danger" 
+        data-sitekey="6Lc4DIYqAAAAALd_TMfHUltnDYL6swGq3blE1xBz" 
         data-callback='onSubmit' 
-        data-action='submit'>
+        data-action='submit' type="submit">
                                 {{ trans('global.save') }}
                             </button>
                         </div>
@@ -108,4 +108,11 @@
         </div>
     </div>
 </div>
+@endsection
+@section('scripts')
+<script>
+   function onSubmit(token) {
+     document.getElementById("form").submit();
+   }
+ </script>
 @endsection
