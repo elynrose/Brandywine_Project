@@ -93,6 +93,7 @@
                             <input class="form-control" type="hidden" name="pot" id="pot" value="{{ old('pot', '') }}">
                         </div>
                         <div class="form-group">
+                            <input class="form-control" type="hidden" name="recaptcha_token" id="recaptcha_token" value="{{ old('recaptcha_token', '') }}">
                     
                         <button class="g-recaptcha btn btn-danger" 
         data-sitekey="6Lc4DIYqAAAAALd_TMfHUltnDYL6swGq3blE1xBz" 
@@ -111,8 +112,13 @@
 @endsection
 @section('scripts')
 <script>
-   function onSubmit(token) {
-     document.getElementById("form").submit();
-   }
+<script>
+    grecaptcha.ready(function() {
+        grecaptcha.execute('{{ config('captcha.sitekey') }}', {action: 'submit'}).then(function(token) {
+            // Assign token to hidden field
+            document.getElementById('recaptcha_token').value = token;
+        });
+    });
+</script>
  </script>
 @endsection
