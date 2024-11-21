@@ -36,9 +36,7 @@ class InquiriesController extends Controller
 
     public function store(StoreInquiryRequest $request)
     {
-        $request->validate([
-            'recaptcha_token' => 'required',
-        ]);
+
 
         if (!empty($request->address)) {
             // This contact message is a spam, do not store it
@@ -46,11 +44,18 @@ class InquiriesController extends Controller
                 'message' => $request->input('message'),
                 'ip' => $request->ip(),
             ]);
-
             die();
         }
 
-    
+        if($request->ansewer != 'three'){
+            return back()->withErrors(['recaptcha' => 'reCAPTCHA verification failed.']);
+        }
+
+    /*
+            $request->validate([
+            'recaptcha_token' => 'required',
+        ]);
+
         $response = Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
             'secret' => config('captcha.secret'),
             'response' => $request->input('recaptcha_token'),
@@ -62,10 +67,11 @@ class InquiriesController extends Controller
             return back()->withErrors(['recaptcha' => 'reCAPTCHA verification failed.']);
         }
     
-
+*/
         $inquiry = Inquiry::create($request->all());
 
-    return back()->with('message', 'Your inquiry has been submitted. You will hear back from us shortly.');
+        return redirect()->route('frontend.inquiries.show', $request->inventory_id);
+
     }
 
     public function edit(Inquiry $inquiry)

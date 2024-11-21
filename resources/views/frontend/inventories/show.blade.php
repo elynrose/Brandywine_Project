@@ -176,6 +176,10 @@
                 <br>
                <p> <a href="javascript:void(0);" id="toggle-details">Show More</a></p>
 
+               <p><!-- Button trigger modal -->
+<a href="javascript:void(0);" class="btn btn-warning" data-toggle="modal" data-target="#inquiryModal">
+    <strong>Request a Quote</strong>
+</a></p>
 
                 <script>
                     document.getElementById('toggle-details').addEventListener('click', function() {
@@ -194,7 +198,16 @@
 
 
 <!-- Modal -->
-
+<div class="modal fade" id="inquiryModal" tabindex="-1" role="dialog" aria-labelledby="inquiryModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="inquiryModalLabel">Request a Quote</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
                 <form method="POST" action="{{ route("frontend.inquiries.store") }}" enctype="multipart/form-data">
                     @method('POST')
                     @csrf
@@ -251,12 +264,20 @@
                     <div class="form-group">
                         <input class="form-control" type="hidden" name="address" id="address" value="">
                         <input type="hidden" name="inventory_id" value="{{ Request::segment(2) }}">
+                    </div>
+                    <div class="form-group">
+
+                    <p>Solve this problem, write the answer in words<br> 1 + 4 = <input style="width:20px;" type="text" name="answer" value=""></p>
+                </div>
                         <button class="btn btn-danger" type="submit">
                             {{ trans('global.save') }}
                         </button>
                     </div>
                 </form>
-         
+            </div>
+        </div>
+    </div>
+</div>
 
                 </div>
 
