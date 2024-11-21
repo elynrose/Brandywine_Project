@@ -35,7 +35,7 @@ class InquiriesController extends Controller
     }
 
 
-    public function save($request)
+    public function save(Request $request)
     {
         if($request->address !== null){
             //This is spam
