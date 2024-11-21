@@ -45,9 +45,6 @@ class InquiriesController extends Controller
             'phone_number' => 'required',
             'comment' => 'required',
             'inventory_id' => 'required',
-        ]);
-
-        $request->validate([
             'recaptcha_token' => 'required',
         ]);
     

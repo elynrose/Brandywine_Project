@@ -73,9 +73,6 @@ class ContactController extends Controller
             'email' => 'required|email',
             'phone' => 'required',
             'message' => 'required',
-        ]);
-
-        $request->validate([
             'recaptcha_token' => 'required',
         ]);
     

@@ -270,12 +270,9 @@
                     <p>Solve this problem, write the answer in words<br> 1 + 4 = <input style="width:20px;" type="text" name="answer" value=""></p>
                 </div>
                 <input type="hidden" name="recaptcha_token" id="recaptcha_token">
-                <button class="g-recaptcha btn btn-danger" 
-        data-sitekey="6Lc4DIYqAAAAALd_TMfHUltnDYL6swGq3blE1xBz" 
-        data-callback='onSubmit' 
-        data-action='submit' type="submit">
-                            {{ trans('global.save') }}
-                        </button>
+                <button class="btn btn-danger" type="submit">
+    {{ trans('global.save') }}
+</button>
                     </div>
                 </form>
             </div>
@@ -308,8 +305,6 @@
         $('#carouselExampleControls').carousel();
     });
 </script>
-
-<script>
 <script>
     grecaptcha.ready(function() {
         grecaptcha.execute('{{ config('captcha.sitekey') }}', {action: 'submit'}).then(function(token) {

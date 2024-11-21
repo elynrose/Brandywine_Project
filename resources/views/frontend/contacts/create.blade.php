@@ -95,12 +95,9 @@
                         <div class="form-group">
                             <input class="form-control" type="hidden" name="recaptcha_token" id="recaptcha_token" value="{{ old('recaptcha_token', '') }}">
                     
-                        <button class="g-recaptcha btn btn-danger" 
-        data-sitekey="6Lc4DIYqAAAAALd_TMfHUltnDYL6swGq3blE1xBz" 
-        data-callback='onSubmit' 
-        data-action='submit' type="submit">
-                                {{ trans('global.save') }}
-                            </button>
+                            <button class="btn btn-danger" type="submit">
+    {{ trans('global.save') }}
+</button>
                         </div>
                     </form>
                 </div>
@@ -112,7 +109,6 @@
 @endsection
 @section('scripts')
 <script>
-<script>
     grecaptcha.ready(function() {
         grecaptcha.execute('{{ config('captcha.sitekey') }}', {action: 'submit'}).then(function(token) {
             // Assign token to hidden field
@@ -120,5 +116,4 @@
         });
     });
 </script>
- </script>
 @endsection
