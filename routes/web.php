@@ -131,6 +131,7 @@ Route::group(['as' => 'frontend.', 'namespace' => 'Frontend'], function () {
     // Inquiries
     Route::delete('inquiries/destroy', 'InquiriesController@massDestroy')->name('inquiries.massDestroy');
     Route::resource('inquiries', 'InquiriesController');
+    Route::post('inquiries/save', 'InquiriesController@save')->name('inquiries.save');
 
     // Categories
     Route::delete('categories/destroy', 'CategoriesController@massDestroy')->name('categories.massDestroy');

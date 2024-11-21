@@ -208,7 +208,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="POST" action="{{ route("frontend.inquiries.store") }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route("frontend.inquiries.save") }}" enctype="multipart/form-data">
                     @method('POST')
                     @csrf
                     <div class="form-group">

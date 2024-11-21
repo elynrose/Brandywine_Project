@@ -34,6 +34,17 @@ class InquiriesController extends Controller
         return view('frontend.inquiries.create', compact('inventories'));
     }
 
+
+    public function save(StoreInquiryRequest $request)
+    {
+        $inquiry = Inquiry::create($request->all());
+
+        return redirect()->route('frontend.inquiries.show', $request->inventory_id);
+
+    }
+
+    
+
     public function store(StoreInquiryRequest $request)
     {
         $inquiry = Inquiry::create($request->all());
