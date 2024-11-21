@@ -36,7 +36,7 @@
   
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route("frontend.contacts.save") }}" enctype="multipart/form-data">
+                    <form method="POST" id="form" action="{{ route("frontend.contacts.save") }}" enctype="multipart/form-data">
                         @method('POST')
                         @csrf
                         <div class="form-group">
@@ -95,7 +95,7 @@
                         <div class="form-group">
                     
                             <button class="btn btn-danger g-recaptcha" type="submit"
-        data-sitekey="reCAPTCHA_site_key" 
+        data-sitekey="{{ config('captcha.sitekey') }}" 
         data-callback='onSubmit' 
         data-action='submit'>
                                 {{ trans('global.save') }}

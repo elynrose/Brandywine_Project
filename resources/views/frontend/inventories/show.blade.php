@@ -193,7 +193,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="POST" action="{{ route("frontend.inquiries.store") }}" enctype="multipart/form-data">
+                <form method="POST" id="form" action="{{ route("frontend.inquiries.store") }}" enctype="multipart/form-data">
                     @method('POST')
                     @csrf
                     <div class="form-group">
@@ -250,7 +250,7 @@
                         <input class="form-control" type="hidden" name="address" id="address" value="">
                         <input type="hidden" name="inventory_id" value="{{ Request::segment(2) }}">
                         <button class="btn btn-danger g-recaptcha" type="submit"
-        data-sitekey="reCAPTCHA_site_key" 
+        data-sitekey="{{ config('captcha.sitekey') }}" 
         data-callback='onSubmit' 
         data-action='submit'>
                     </div>
