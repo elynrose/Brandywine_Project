@@ -181,19 +181,25 @@
     <strong>Request a Quote</strong>
 </a></p>
 
-        
+                <script>
+                    document.getElementById('toggle-details').addEventListener('click', function() {
+                        var moreDetails = document.getElementById('more-details');
+                        if (moreDetails.style.display === 'none') {
+                            moreDetails.style.display = 'block';
+                            this.textContent = 'Show Less';
+                        } else {
+                            moreDetails.style.display = 'none';
+                            this.textContent = 'Show More';
+                        }
+                    });
+                </script>
+
+
+
+
 <!-- Modal -->
-<div class="modal fade" id="inquiryModal" tabindex="-1" role="dialog" aria-labelledby="inquiryModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="inquiryModalLabel">Request a Quote</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form method="POST" id="form" action="{{ route("frontend.inquiries.store") }}" enctype="multipart/form-data">
+
+                <form method="POST" action="{{ route("frontend.inquiries.store") }}" enctype="multipart/form-data">
                     @method('POST')
                     @csrf
                     <div class="form-group">
@@ -249,13 +255,12 @@
                     <div class="form-group">
                         <input class="form-control" type="hidden" name="address" id="address" value="">
                         <input type="hidden" name="inventory_id" value="{{ Request::segment(2) }}">
-                        <button class="btn btn-danger g-recaptcha" type="submit">Submit</button>
+                        <button class="btn btn-danger" type="submit">
+                            {{ trans('global.save') }}
+                        </button>
                     </div>
                 </form>
-            </div>
-        </div>
-    </div>
-</div>
+         
 
                 </div>
 
@@ -277,19 +282,6 @@
 @endsection
 
 @section('scripts')
-<script>
-                    document.getElementById('toggle-details').addEventListener('click', function() {
-                        var moreDetails = document.getElementById('more-details');
-                        if (moreDetails.style.display === 'none') {
-                            moreDetails.style.display = 'block';
-                            this.textContent = 'Show Less';
-                        } else {
-                            moreDetails.style.display = 'none';
-                            this.textContent = 'Show More';
-                        }
-                    });
-                </script>
-
 <script>
     $(document).ready(function(){
         $('#carouselExampleControls').carousel();
