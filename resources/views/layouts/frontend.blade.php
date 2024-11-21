@@ -28,7 +28,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/1.5.0/css/perfect-scrollbar.min.css" rel="stylesheet" />
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet" />
-    <script src="https://www.google.com/recaptcha/api.js?render={{ config('nocaptcha.sitekey', '6Lc6Q4UqAAAAAElnp4q9Oaa3b_ImDFLZ8_5_uTJi') }}"></script>
+    <script src="https://www.google.com/recaptcha/api.js?render={{ config('captcha.sitekey') }}"></script>
 
     @yield('styles')
 </head>

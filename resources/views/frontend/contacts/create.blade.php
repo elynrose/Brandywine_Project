@@ -93,7 +93,8 @@
                             <input class="form-control" type="hidden" name="pot" id="pot" value="{{ old('pot', '') }}">
                         </div>
                         <div class="form-group">
-                        <div class="g-recaptcha" data-sitekey="6Lc6Q4UqAAAAAElnp4q9Oaa3b_ImDFLZ8_5_uTJi"></div>
+                        <input type="hidden" class="mt-2 mb-2" name="recaptcha_token" id="recaptcha_token">
+
                             <button class="btn btn-danger" type="submit">
                                 {{ trans('global.save') }}
                             </button>
