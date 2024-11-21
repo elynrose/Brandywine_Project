@@ -1,13 +1,6 @@
 @extends('layouts.frontend')
 @section('content')
-<script>
-    grecaptcha.ready(function() {
-        grecaptcha.execute('{{ config('captcha.sitekey') }}', {action: 'submit'}).then(function(token) {
-            // Assign token to hidden field
-            document.getElementById('recaptcha_token').value = token;
-        });
-    });
-</script>
+
 <div class="container mt-5">
 <div class="card">
 
@@ -277,8 +270,8 @@
 
                     <p>Solve this problem, write the answer in words<br> 1 + 4 = <input style="width:20px;" type="text" name="answer" value=""></p>
                 </div>
-                <input type="hidden" name="recaptcha_token" id="recaptcha_token">
-                <button class="btn btn-danger" type="submit">
+                <div class="g-recaptcha" data-sitekey="6Lc6Q4UqAAAAAElnp4q9Oaa3b_ImDFLZ8_5_uTJi"></div>
+                <br/>                   <button class="btn btn-danger" type="submit">
     {{ trans('global.save') }}
 </button>
                     </div>

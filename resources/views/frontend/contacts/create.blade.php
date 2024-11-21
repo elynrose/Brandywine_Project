@@ -1,13 +1,5 @@
 @extends('layouts.frontend')
 @section('content')
-<script>
-    grecaptcha.ready(function() {
-        grecaptcha.execute('{{ config('captcha.sitekey') }}', {action: 'submit'}).then(function(token) {
-            // Assign token to hidden field
-            document.getElementById('recaptcha_token').value = token;
-        });
-    });
-</script>
 <div class="container py-5">
     <div class="row justify-content-center">
         <div class="col-md-6">
@@ -101,8 +93,8 @@
                             <input class="form-control" type="hidden" name="pot" id="pot" value="{{ old('pot', '') }}">
                         </div>
                         <div class="form-group">
-                            <input class="form-control" type="hidden" name="recaptcha_token" id="recaptcha_token" value="{{ old('recaptcha_token', '') }}">
-                    
+                        <div class="g-recaptcha" data-sitekey="6Lc6Q4UqAAAAAElnp4q9Oaa3b_ImDFLZ8_5_uTJi"></div>
+                        <br/>                    
                             <button class="btn btn-danger" type="submit">
     {{ trans('global.save') }}
 </button>
