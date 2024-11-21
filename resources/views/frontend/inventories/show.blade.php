@@ -176,10 +176,6 @@
                 <br>
                <p> <a href="javascript:void(0);" id="toggle-details">Show More</a></p>
 
-               <p><!-- Button trigger modal -->
-<a href="javascript:void(0);" class="btn btn-warning" data-toggle="modal" data-target="#inquiryModal">
-    <strong>Request a Quote</strong>
-</a></p>
 
                 <script>
                     document.getElementById('toggle-details').addEventListener('click', function() {
