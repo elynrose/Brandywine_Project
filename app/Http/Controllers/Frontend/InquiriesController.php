@@ -18,7 +18,6 @@ class InquiriesController extends Controller
 {
     public function index()
     {
-        abort_if(Gate::denies('inquiry_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $inquiries = Inquiry::with(['inventory'])->get();
 
@@ -36,7 +35,6 @@ class InquiriesController extends Controller
 
     public function store(StoreInquiryRequest $request)
     {
-
 
         if (!empty($request->address)) {
             // This contact message is a spam, do not store it
@@ -94,8 +92,6 @@ class InquiriesController extends Controller
 
     public function show(Inquiry $inquiry)
     {
-        abort_if(Gate::denies('inquiry_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
         $inquiry->load('inventory');
 
         return view('frontend.inquiries.show', compact('inquiry'));
