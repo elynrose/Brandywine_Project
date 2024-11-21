@@ -47,6 +47,21 @@ class InquiriesController extends Controller
             'inventory_id' => 'required',
         ]);
 
+        $request->validate([
+            'recaptcha_token' => 'required',
+        ]);
+    
+        $response = Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
+            'secret' => config('captcha.secret'),
+            'response' => $request->input('recaptcha_token'),
+        ]);
+    
+        $recaptcha = $response->json();
+    
+        if (!$recaptcha['success'] || $recaptcha['score'] < 0.5) {
+            return back()->withErrors(['recaptcha' => 'reCAPTCHA verification failed.']);
+        }
+
         $inquiry = Inquiry::create($request->all());
 
         return redirect()->route('frontend.inventories.show', $request->inventory_id)->with('success', 'Inquiry saved successfully.');

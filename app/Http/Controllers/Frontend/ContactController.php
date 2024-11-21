@@ -75,6 +75,21 @@ class ContactController extends Controller
             'message' => 'required',
         ]);
 
+        $request->validate([
+            'recaptcha_token' => 'required',
+        ]);
+    
+        $response = Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
+            'secret' => config('captcha.secret'),
+            'response' => $request->input('recaptcha_token'),
+        ]);
+    
+        $recaptcha = $response->json();
+    
+        if (!$recaptcha['success'] || $recaptcha['score'] < 0.5) {
+            return back()->withErrors(['recaptcha' => 'reCAPTCHA verification failed.']);
+        }
+
         if (!empty($request->pot)) {
             // This contact message is a spam, do not store it
             \Log::channel('contact')->info('Spam contact message detected', [
