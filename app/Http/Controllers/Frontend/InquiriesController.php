@@ -14,10 +14,12 @@ use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Http;
 
 
+
 class InquiriesController extends Controller
 {
     public function index()
     {
+        abort_if(Gate::denies('inquiry_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $inquiries = Inquiry::with(['inventory'])->get();
 
@@ -26,7 +28,6 @@ class InquiriesController extends Controller
 
     public function create()
     {
-        abort_if(Gate::denies('inquiry_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $inventories = Inventory::pluck('year', 'id')->prepend(trans('global.pleaseSelect'), '');
 
