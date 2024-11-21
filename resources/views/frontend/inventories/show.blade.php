@@ -252,7 +252,7 @@
                         <button class="btn btn-danger g-recaptcha" type="submit"
         data-sitekey="{{ config('captcha.sitekey') }}" 
         data-callback='onSubmit' 
-        data-action='submit'>
+        data-action='submit'>Submit</button>
                     </div>
                 </form>
             </div>
