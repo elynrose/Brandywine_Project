@@ -49,7 +49,7 @@ class InquiriesController extends Controller
 
         $inquiry = Inquiry::create($request->all());
 
-        return redirect()->route('frontend.inquiries.show', $request->inventory_id)->with('success', 'Inquiry saved successfully.');
+        return redirect()->route('frontend.inventories.show', $request->inventory_id)->with('success', 'Inquiry saved successfully.');
 
     }
 
