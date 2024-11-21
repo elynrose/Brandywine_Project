@@ -42,7 +42,8 @@ class InquiriesController extends Controller
             return redirect()->route('frontend.inquiries.show', $request->inventory_id);
         }
         $inquiry = Inquiry::create([
-            'name' => $request->name,
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
             'email' => $request->email,
             'phone' => $request->phone,
             'message' => $request->message,
