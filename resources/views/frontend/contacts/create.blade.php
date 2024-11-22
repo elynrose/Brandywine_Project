@@ -97,10 +97,10 @@
     {!! NoCaptcha::display() !!}
 
     @if ($errors->has('g-recaptcha-response'))
-        <span class="text-danger">{{ $errors->first('g-recaptcha-response') }}</span>
+        <br>{{ $errors->first('g-recaptcha-response') }}
     @endif
-                        
-                            <button class="btn btn-danger" type="submit">
+
+    <br> <button class="btn btn-danger" type="submit">
     {{ trans('global.save') }}
 </button>
                         </div>
