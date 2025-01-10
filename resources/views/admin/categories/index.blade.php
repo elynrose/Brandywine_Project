@@ -22,12 +22,12 @@
                         <th width="10">
 
                         </th>
-                        <th>
+                     <!--<th>
                             {{ trans('cruds.category.fields.id') }}
                         </th>
                         <th>
                             {{ trans('cruds.category.fields.photo') }}
-                        </th>
+                        </th>-->
                         <th>
                             {{ trans('cruds.category.fields.name') }}
                         </th>
@@ -45,7 +45,7 @@
                             <td>
 
                             </td>
-                            <td>
+                         <!--   <td>
                                 {{ $category->id ?? '' }}
                             </td>
                             <td>
@@ -54,7 +54,7 @@
                                         <img src="{{ $category->photo->getUrl('thumb') }}">
                                     </a>
                                 @endif
-                            </td>
+                            </td>-->
                             <td>
                                 {{ $category->name ?? '' }}
                             </td>

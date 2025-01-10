@@ -37,12 +37,12 @@
                         <th>
                             {{ trans('cruds.inventory.fields.title') }}
                         </th>
-                        <th>
+                       <!-- <th>
                             {{ trans('cruds.inventory.fields.make') }}
                         </th>
                         <th>
                             {{ trans('cruds.inventory.fields.vehicle_model') }}
-                        </th>
+                        </th>-->
                         <th>
                             {{ trans('cruds.inventory.fields.featured') }}
                         </th>
@@ -84,12 +84,12 @@
                             <td>
                                 {{ $inventory->title ?? '' }}
                             </td>
-                            <td>
+                           <!-- <td>
                                 {{ $inventory->make ?? '' }}
                             </td>
                             <td>
                                 {{ $inventory->vehicle_model ?? '' }}
-                            </td>
+                            </td>-->
                             <td>
                                 <span style="display:none">{{ $inventory->featured ?? '' }}</span>
                                 <input type="checkbox" disabled="disabled" {{ $inventory->featured ? 'checked' : '' }}>
@@ -98,9 +98,9 @@
                                 <span style="display:none">{{ $inventory->published ?? '' }}</span>
                                 <input type="checkbox" disabled="disabled" {{ $inventory->published ? 'checked' : '' }}>
                             </td>
-                            <td>
+                          <!--  <td>
                                 {{ $inventory->attachment ?? '' }}
-                            </td>
+                            </td>-->
                             <td>
                                 {{ $inventory->created_at ?? '' }}
                             </td>

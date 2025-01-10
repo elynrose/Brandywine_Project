@@ -19,11 +19,9 @@ class UpdateInventoryRequest extends FormRequest
         return [
             'year' => [
                 'string',
-                'required',
             ],
             'stock_number' => [
                 'string',
-                'required',
             ],
             'category_id' => [
                 'required',

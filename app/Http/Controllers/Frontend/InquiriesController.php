@@ -46,12 +46,13 @@ class InquiriesController extends Controller
             'phone_number' => 'required',
             'comment' => 'required',
             'inventory_id' => 'required',
-            'g-recaptcha-response' => 'required|captcha',
+          'g-recaptcha-response' => 'required|captcha',
     ]);
 
     if ($validator->fails()) {
         return redirect()->back()->withErrors($validator)->withInput();
     }
+
         $inquiry = Inquiry::create($request->all());
 
         return redirect()->route('frontend.inventories.show', $request->inventory_id)->with('success', 'Inquiry saved successfully.');

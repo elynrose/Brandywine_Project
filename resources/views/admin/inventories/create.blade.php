@@ -10,15 +10,25 @@
         <form method="POST" action="{{ route("admin.inventories.store") }}" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
-                <label class="required" for="stock_number">{{ trans('cruds.inventory.fields.stock_number') }}</label>
-                <input class="form-control {{ $errors->has('stock_number') ? 'is-invalid' : '' }}" type="text" name="stock_number" id="stock_number" value="{{ old('stock_number', '') }}" required>
-                @if($errors->has('stock_number'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('stock_number') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.inventory.fields.stock_number_helper') }}</span>
-            </div>
+                            <label class="required" for="stock_number">{{ trans('cruds.inventory.fields.stock_number') }}</label>
+                            <input class="form-control" type="text" name="stock_number" id="stock_number" value="{{ old('stock_number', '') }}">
+                            @if($errors->has('stock_number'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('stock_number') }}
+                                </div>
+                            @endif
+                            <span class="help-block">{{ trans('cruds.inventory.fields.stock_number_helper') }}</span>
+                        </div>
+                        <div class="form-group">
+                            <label class="required" for="year">{{ trans('cruds.inventory.fields.year') }}</label>
+                            <input class="form-control" type="text" name="year" id="year" value="{{ old('year', '') }}">
+                            @if($errors->has('year'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('year') }}
+                                </div>
+                            @endif
+                            <span class="help-block">{{ trans('cruds.inventory.fields.year_helper') }}</span>
+                        </div>
             <div class="form-group">
                 <label class="required" for="category_id">{{ trans('cruds.inventory.fields.category') }}</label>
                 <select class="form-control select2 {{ $errors->has('category') ? 'is-invalid' : '' }}" name="category_id" id="category_id" required>
