@@ -12,7 +12,7 @@
             @csrf
             <div class="form-group">
                 <label class="required" for="stock_number">{{ trans('cruds.inventory.fields.stock_number') }}</label>
-                <input class="form-control {{ $errors->has('stock_number') ? 'is-invalid' : '' }}" type="text" name="stock_number" id="stock_number" value="{{ old('year', $inventory->stock_number) }}" required>
+                <input class="form-control {{ $errors->has('stock_number') ? 'is-invalid' : '' }}" type="text" name="stock_number" id="stock_number" value="{{ old('year', $inventory->stock_number) }}">
                 @if($errors->has('stock_number'))
                     <div class="invalid-feedback">
                         {{ $errors->first('stock_number') }}
@@ -22,7 +22,7 @@
             </div>
             <div class="form-group">
                 <label class="required" for="year">{{ trans('cruds.inventory.fields.year') }}</label>
-                <input class="form-control {{ $errors->has('year') ? 'is-invalid' : '' }}" type="text" name="year" id="year" value="{{ old('year', $inventory->year) }}" required>
+                <input class="form-control {{ $errors->has('year') ? 'is-invalid' : '' }}" type="text" name="year" id="year" value="{{ old('year', $inventory->year) }}">
                 @if($errors->has('year'))
                     <div class="invalid-feedback">
                         {{ $errors->first('year') }}
